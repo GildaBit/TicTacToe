@@ -64,10 +64,6 @@ const checkWin = player => {
     });
 };
 
-function isDraw() {
-    return;
-}
-
 // function handleClick(e) {}
 const handleClick = e => {
     // e = event, e.target = exact element that triggered event
