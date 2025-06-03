@@ -16,4 +16,18 @@ let currentPlayer = 'X';
 
 const cells = document.querySelectorAll('[data-cell]');
 
+// function handleClick(e) {}
+const handleClick = e => {
+    // e = event, e.target = exact element that triggered event
+    const cell = e.target;
+    cell.textContent = currentPlayer;
+    // ? means if : means else
+    currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+};
+
 // cell => { ... }	function(cell) { ... } THESE TWO ARE THE SAME THING IN LOGIC
+cells.forEach(cell => {
+    cell.addEventListener('click', handleClick, { once: true});
+    // { once: true } means every cell can only be clicked once
+});
+

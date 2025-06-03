@@ -22,10 +22,12 @@ h1 {
 .cell {
     background-color: #eee;
     border: 0.3vmin solid #444; 
-    font-size: 10vmin;
-    display:flex;
+    font-size: 15vmin;
+    display: flex;
     justify-content: center; /* how content of flexbox is spaced */
     align-content: center;
+    align-items: center;
+    line-height: 1;
     cursor: pointer;
     user-select: none;
 }
