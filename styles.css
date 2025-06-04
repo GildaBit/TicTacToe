@@ -11,6 +11,14 @@ body {
     align-items: center;
 }
 
+#title {
+    font-family: 'Alpenkreuzer';
+    src: url('fonts/alpenkreuzer.woff2') format('woff2'),
+         url('fonts/alpenkreuzer.woff') format('woff');
+    font-size: 20vmin;
+    margin: 0;
+}
+
 .page-wrapper {
     flex: 1;
     display: flex;
@@ -41,21 +49,25 @@ body {
 
 footer {
     background-color: #eee;
-    font-size: 2vmin;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100vw;
     min-height: 2em;
     border-top: 0.3vmin solid #444;
+    position: fixed;
+    bottom: 0;
 }
 
 .github-link a {
+    font-size: 1em;
     color: black;
     text-decoration: underline;
+    display: inline-block;
 }
 
 .github-link a:hover {
     color: rgb(105, 163, 163);
     text-decoration: underline;
+    transform: scale(1.05);
 }
