@@ -1,11 +1,13 @@
 const startScreen = document.getElementById('start-screen');
-const gameContainer = document.getElementById('game-container');
-const startBtn = document.getElementById('start-btn');
+const normalGameContainer = document.getElementById('normal-game-container');
+const normalStartBtn = document.getElementById('normal-start-btn');
 const rulesBtn = document.getElementById('rules-btn');
 const rulesText = document.getElementById('rules');
 const homeBtns = document.querySelectorAll('.home-btn'); // returns array of home buttons
 const rules = document.getElementById('rules');
 const resetBtn = document.getElementById('reset-btn');
+const ultimateStartBtn = document.getElementById('ultimate-start-btn');
+const ultimateGameContainer = document.getElementById('ultimate-game-container');
 
 const resetGame = () => {
     cells.forEach(cell => {
@@ -16,15 +18,21 @@ const resetGame = () => {
     });
 }
 
-startBtn.addEventListener('click', () => {
+normalStartBtn.addEventListener('click', () => {
     startScreen.style.display = 'none';
-    gameContainer.style.display = 'block';
+    normalGameContainer.style.display = 'block';
+});
+
+ultimateStartBtn.addEventListener('click', () => {
+    startScreen.style.display = 'none';
+    ultimateGameContainer.style.display = 'block';
 });
 
 homeBtns.forEach(btn => {
     btn.addEventListener('click', () => {
         startScreen.style.display = 'block';
-        gameContainer.style.display = 'none';
+        normalGameContainer.style.display = 'none';
+        ultimateGameContainer.style.display = 'none';
         rules.style.display = 'none';
         resetGame();
     });

@@ -43,19 +43,28 @@ body {
     flex-direction: column;
 }
 
-.board {
+.board, .big-board {
     display: grid; /* CSS grid to lay out cells */
     width: 60vmin; /* vmin is percentage of viewport */
     height: 60vmin;
     grid-template-columns: repeat(3, 1fr); /* 1fr means one fraction */
     grid-template-rows: repeat(3, 1fr);
+    font-size: 15vmin;
+    gap: 4% /* intercell gap */
+}
+.small-board {
+    display: grid; /* CSS grid to lay out cells */
+    width: auto; /* vmin is percentage of viewport */
+    height: auto;
+    grid-template-columns: repeat(3, 1fr); /* 1fr means one fraction */
+    grid-template-rows: repeat(3, 1fr);
+    font-size: 5vmin;
     gap: 2% /* intercell gap */
 }
 
 .cell {
     background-color: #eee;
     border: 0.3vmin solid #444; 
-    font-size: 15vmin;
     display: flex;
     justify-content: center; /* how content of flexbox is spaced */
     align-content: center;
@@ -88,4 +97,11 @@ footer {
     color: rgb(105, 163, 163);
     text-decoration: underline;
     transform: scale(1.05);
+}
+
+.won-X {
+  background-color: rgba(255, 0, 0, 0.2);
+}
+.won-O {
+  background-color: rgba(0, 0, 255, 0.2);
 }
