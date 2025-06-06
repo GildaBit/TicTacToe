@@ -11,26 +11,32 @@ export const winningCombos = [
 
 import { bigBoardState, checkBigWin } from "./ultTicTacToe.js"
 
-let currentPlayer = 'X';
+export const state = {
+    currentPlayer: 'X'
+};
 
 export function handleClick(cell, boardElement, boardIndex = null) {
     if (cell.textContent !== '') return;
-    cell.textContent = currentPlayer;
+    cell.textContent = state.currentPlayer;
     const cells = [...boardElement.querySelectorAll('[data-cell]')]; // [... ] makes the NodeList into an array
 
     const hasWon = winningCombos.some(combo => 
         combo.every(i => {
             const cell = cells.find(c => c.dataset.cell == i);
-            return cell && cell.textContent === currentPlayer;
+            return cell && cell.textContent === state.currentPlayer;
         })
     );
 
     if (boardIndex !== null && Array.isArray(bigBoardState)) {
         if (hasWon) {
-            boardElement.classList.add('won-' + currentPlayer);
-            bigBoardState[boardIndex] = currentPlayer;
-            if (checkBigWin(currentPlayer)) {
-                alert(`${currentPlayer} wins the BIG GAME!`);
+            boardElement.classList.add('won-' + state.currentPlayer);
+            boardElement.setAttribute('data-winner', state.currentPlayer);
+            cells.forEach(cell => {
+                cell.setAttribute('data-winner', state.currentPlayer); // <-- add this line
+            });
+            bigBoardState[boardIndex] = state.currentPlayer;
+            if (checkBigWin(state.currentPlayer)) {
+                alert(`${state.currentPlayer} wins the BIG GAME!`);
                 return;
             } else if (bigBoardState.every(cell => cell !== '')) {
                 alert('A BIG DRAW!!');
@@ -39,8 +45,8 @@ export function handleClick(cell, boardElement, boardIndex = null) {
         }
     } else {
         if (hasWon) {
-            boardElement.classList.add('won-' + currentPlayer);
-            alert(`${currentPlayer} wins!`);
+            boardElement.classList.add('won-' + state.currentPlayer);
+            alert(`${state.currentPlayer} wins!`);
             return;
         } else if ([...cells].every(cell => cell.textContent !== '')) { // [...cells] converts cells from NodeList to array
             alert('A DRAW!!');
@@ -48,5 +54,5 @@ export function handleClick(cell, boardElement, boardIndex = null) {
         }
     }
 
-    currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+    state.currentPlayer = state.currentPlayer === 'X' ? 'O' : 'X';
 }

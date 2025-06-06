@@ -53,6 +53,7 @@ body {
     gap: 4% /* intercell gap */
 }
 .small-board {
+    position: relative;
     display: grid; /* CSS grid to lay out cells */
     width: auto; /* vmin is percentage of viewport */
     height: auto;
@@ -63,6 +64,7 @@ body {
 }
 
 .cell {
+    position: relative;
     background-color: #eee;
     border: 0.3vmin solid #444; 
     display: flex;
@@ -100,8 +102,49 @@ footer {
 }
 
 .won-X {
-  background-color: rgba(255, 0, 0, 0.2);
+    position: relative;
+    background-color: rgba(255, 0, 0, 0.4);
 }
 .won-O {
-  background-color: rgba(0, 0, 255, 0.2);
+    position: relative;
+    background-color: rgba(0, 0, 255, 0.4);
+}
+
+/* after positions this stuff after that class */
+.won-X::after,
+.won-O::after {
+    content: attr(data-winner);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size:20vmin;
+    color: rgba(0, 0, 0, 0.5); /* faded overlay */
+    pointer-events: none;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.won-X .cell {
+  background-color: rgba(255, 0, 0, 0.4); /* More red */
+  color: rgba(255, 0, 0, 0.6); 
+}
+
+.won-O .cell {
+  background-color: rgba(0, 0, 255, 0.4); /* Optional for consistency */
+  color: rgba(0, 0, 255, 0.6);
+}
+
+.won-X .cell::after,
+.won-O .cell::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 5vmin;
+  color: black;
+  opacity: 0.3;
+  pointer-events: none;
 }
