@@ -1,33 +1,5 @@
 // document is a built in JS object that represents entire page, querySelector selects first element that matches
 const board = document.querySelector('.board'); 
-const startScreen = document.getElementById('start-screen');
-const gameContainer = document.getElementById('game-container');
-const startBtn = document.getElementById('start-btn');
-const rulesBtn = document.getElementById('rules-btn');
-const rulesText = document.getElementById('rules');
-const homeBtns = document.querySelectorAll('.home-btn'); // returns array of home buttons
-const rules = document.getElementById('rules');
-const resetBtn = document.getElementById('reset-btn');
-
-startBtn.addEventListener('click', () => {
-    startScreen.style.display = 'none';
-    gameContainer.style.display = 'block';
-});
-
-homeBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-        startScreen.style.display = 'block';
-        gameContainer.style.display = 'none';
-        rules.style.display = 'none';
-    });
-});
-
-rulesBtn.addEventListener('click', () => {
-    startScreen.style.display = 'none';
-    rules.style.display = 'block';
-});
-
-
 
 const winningCombos = [
     [0, 1, 2],
@@ -89,11 +61,4 @@ cells.forEach(cell => {
     // { once: true } means every cell can only be clicked once
 });
 
-resetBtn.addEventListener('click', () => {
-    cells.forEach(cell => {
-        cell.textContent = '';
-        currentPlayer = 'X';
-        cell.addEventListener('click', handleClick, { once: true});
-        // { once: true } means every cell can only be clicked once
-    });
-});   
+ 
