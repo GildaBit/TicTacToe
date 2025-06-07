@@ -101,18 +101,18 @@ footer {
     transform: scale(1.05);
 }
 
-.won-X {
+#ultimate-game-container .won-X {
     position: relative;
     background-color: rgba(255, 0, 0, 0.4);
 }
-.won-O {
+#ultimate-game-container .won-O {
     position: relative;
     background-color: rgba(0, 0, 255, 0.4);
 }
 
 /* after positions this stuff after that class */
-.won-X::after,
-.won-O::after {
+#ultimate-game-container .won-X::after,
+#ultimate-game-container .won-O::after {
     content: attr(data-winner);
     position: absolute;
     top: 50%;
@@ -127,18 +127,18 @@ footer {
     justify-content: center;
 }
 
-.won-X .cell {
+#ultimate-game-container .won-X .cell {
   background-color: rgba(255, 0, 0, 0.4); /* More red */
   color: rgba(255, 0, 0, 0.6); 
 }
 
-.won-O .cell {
+#ultimate-game-container .won-O .cell {
   background-color: rgba(0, 0, 255, 0.4); /* Optional for consistency */
   color: rgba(0, 0, 255, 0.6);
 }
 
-.won-X .cell::after,
-.won-O .cell::after {
+#ultimate-game-container .won-X .cell::after,
+#ultimate-game-container .won-O .cell::after {
   position: absolute;
   top: 50%;
   left: 50%;
