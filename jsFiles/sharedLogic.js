@@ -12,11 +12,13 @@ export const winningCombos = [
 import { bigBoardState, checkBigWin } from "./ultTicTacToe.js"
 
 export const state = {
-    currentPlayer: 'X'
+    currentPlayer: 'X',
+    targetBoard: null
 };
 
 export function handleClick(cell, boardElement, boardIndex = null) {
     if (cell.textContent !== '') return;
+    if (state.targetBoard !== null && boardIndex !== state.targetBoard) return;
     cell.textContent = state.currentPlayer;
     const cells = [...boardElement.querySelectorAll('[data-cell]')]; // [... ] makes the NodeList into an array
 
@@ -55,4 +57,27 @@ export function handleClick(cell, boardElement, boardIndex = null) {
     }
 
     state.currentPlayer = state.currentPlayer === 'X' ? 'O' : 'X';
+    
+    if (boardIndex !== null) {
+        const nextBoardIndex = parseInt(cell.dataset.cell);
+
+        const nextBoard = document.querySelector(`.small-board[data-board="${nextBoardIndex}"]`);
+
+        const isWon = nextBoard?.classList.contains('won-X') || nextBoard?.classList.contains('won-O');
+        const isFull = [...nextBoard?.querySelectorAll('.cell') || []].every(c => c.textContent !== '');
+
+        if (isWon || isFull) {
+            state.targetBoard = null; // player can go anywhere
+        } else {
+            state.targetBoard = nextBoardIndex; // restrict to that board
+        }
+    }
+    document.querySelectorAll('.small-board').forEach(b => b.classList.remove('allowed'));
+
+    if (state.targetBoard !== null) {
+        document.querySelector(`.small-board[data-board="${state.targetBoard}"]`)?.classList.add('allowed');
+    } else {
+        // Show all boards as allowed
+        document.querySelectorAll('.small-board').forEach(b => b.classList.add('allowed'));
+    }
 }

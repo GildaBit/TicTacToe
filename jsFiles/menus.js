@@ -13,6 +13,8 @@ const ultimateStartBtn = document.getElementById('ultimate-start-btn');
 const ultimateGameContainer = document.getElementById('ultimate-game-container');
 
 const resetGame = () => {
+    state.targetBoard = null;
+    document.querySelectorAll('.small-board').forEach(b => b.classList.add('allowed'));
     state.currentPlayer = 'X';
     bigBoardState.fill('');
 

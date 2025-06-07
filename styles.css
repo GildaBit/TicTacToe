@@ -148,3 +148,7 @@ footer {
   opacity: 0.3;
   pointer-events: none;
 }
+
+.small-board.allowed {
+  outline: 0.5vmin solid green;
+}
