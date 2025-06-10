@@ -4,6 +4,18 @@ html, body {
     height: 100%;
 }
 
+@font-face {
+  font-family: 'Alpenkreuzer';
+  src: url('fonts/alpenkreuzer.woff2') format('woff2'),
+       url('fonts/alpenkreuzer.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'propaganda';
+  src: url('fonts/propaganda.woff2') format('woff2'),
+       url('fonts/propaganda.woff') format('woff');
+}
+
 body {
     font-family: sans-serif;
     display: flex; /* Use flexbox (CSS system designed for layouts) */
@@ -13,12 +25,11 @@ body {
 
 #title {
     font-family: 'Alpenkreuzer';
-    src: url('fonts/alpenkreuzer.woff2') format('woff2'),
-         url('fonts/alpenkreuzer.woff') format('woff');
     font-size: 20vmin;
     margin: 0;
     padding: 0;
     line-height: 1;
+    text-align: center;
 }
 
 #tac {
@@ -81,11 +92,12 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100vw;
+    width: 150vw;
     min-height: 2em;
     border-top: 0.3vmin solid #444;
     position: fixed;
     bottom: 0;
+    
 }
 
 .github-link a {
@@ -93,6 +105,7 @@ footer {
     color: black;
     text-decoration: underline;
     display: inline-block;
+    text-align: center;
 }
 
 .github-link a:hover {
@@ -151,4 +164,15 @@ footer {
 
 .small-board.allowed {
   outline: 0.5vmin solid green;
+}
+
+.homescreen-btn {
+    width: 80%;
+    max-width: 600px;
+    padding: 1em;
+    height: auto;
+    margin: 1.5em auto;
+    align-self: center;
+    display: block; /* stacks the buttons */
+    font-family: 'propaganda';
 }
